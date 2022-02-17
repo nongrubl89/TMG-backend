@@ -16,7 +16,7 @@ app.use("/public", express.static(__dirname + "/public/"));
 const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.qmdzu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(4000))
+  .then(() => app.listen(process.env.PORT || 4000))
   .catch((err) => console.log(err));
 
 app.get("/females", (req, res, next) => {
